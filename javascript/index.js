@@ -1,5 +1,4 @@
 function updateTime() {
-  // Los Angeles
   let losAngelesElement = document.querySelector("#los-angeles");
   if (losAngelesElement) {
     let losAngelesDateElement = losAngelesElement.querySelector(".date");
@@ -12,7 +11,6 @@ function updateTime() {
     );
   }
 
-  // Paris
   let parisElement = document.querySelector("#paris");
   if (parisElement) {
     let parisDateElement = parisElement.querySelector(".date");
@@ -21,6 +19,17 @@ function updateTime() {
 
     parisDateElement.innerHTML = parisTime.format("MMMM	Do YYYY");
     parisTimeElement.innerHTML = parisTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+  let cincinnatiElement = document.querySelector("#cincinnati");
+  if (cincinnatiElement) {
+    let cincinnatiDateElement = cincinnatiElement.querySelector(".date");
+    let cincinnatiTimeElement = cincinnatiElement.querySelector(".time");
+    let cincinnatiTime = moment().tz("America/Cincinnati");
+
+    cincinnatiDateElement.innerHTML = cincinnatiTime.format("MMMM	Do YYYY");
+    cincinnatiTimeElement.innerHTML = cincinnatiTime.format(
       "h:mm:ss [<small>]A[</small>]"
     );
   }
@@ -44,6 +53,7 @@ function updateCity(event) {
     "A"
   )}</small></div>
   </div>
+  <a href="/">All cities</a>
   `;
 }
 
@@ -52,4 +62,3 @@ setInterval(updateTime, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
-
